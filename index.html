@@ -4,14 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impuestum</title>
-  <link rel="stylesheet" href="./styles/style.css" >
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Noto+Sans+Gurmukhi:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <header>
-    <img id="logo" src=""/>
-    <span id="titulo">impuestum</span>
-    <a>Buscar</a>
+  <header>    
+    <span id="titulo"><img id="logo" src="./img/logo.png"/> impuestum</span>
+    <a id="boton-buscar"><i class="fa-solid fa-magnifying-glass"></i>Buscar</a>
   </header>
+
+  <main>
+    <section id="entrada-calculadora" class="tarjeta">
+      <span class="lista-tarjeta">$ <input id="input-calculadora" type="number" min="0" max="999999" /></span>      
+      <span class="lista-tarjeta">
+        <a id="selector-usd">USD</a>
+        <a id="selector-ars">ARS</a>
+      </span>
+    </section>
+
+    <section id="resultado-calculadora" class="tarjeta">
+      <div class="lista-tarjeta">
+        <span>IVA (21%)</span>
+        <span id="resultado-iva">AR$ 0,00</span>
+      </div>
+      <div class="lista-tarjeta">
+        <span>PAIS (8%)</span>
+        <span id="resultado-pais">AR$ 0,00</span>
+      </div>
+      <div class="lista-tarjeta">
+        <span>Ganancias  (30%)</span>
+        <span id="resultado-ganancias">AR$ 0,00</span>
+      </div>
+      <div id="contenedor-provincia" class="lista-tarjeta">
+        <span>IIBB <select id="provincia" title="Provincia" name="Provincia"></select></span>
+        <span id="resultado-provincia">AR$ 0,00</span>
+      </div>
+      <div class="lista-tarjeta">
+        <span>Sin impuestos</span>
+        <span id="resultado-sin-impuesto">AR$ 0,00</span>
+      </div>
+      <div class="lista-tarjeta">
+        <span>Total c/impuestos</span>
+        <span id="resultado-total">AR$ 0,00</span>
+      </div>
+      <div class="lista-tarjeta comentario">
+        <p>Dólar oficial <span id="precio-dolar">0</span> by Dolarito.ar</p>
+        <p>Hay bancos que pueden tomar la cotiz. +10% (AR$ 956.45)</p>
+      </div>
+    </section>
+
+
+  </main>
 
   <script src="./script/script.js"></script>
 </body>

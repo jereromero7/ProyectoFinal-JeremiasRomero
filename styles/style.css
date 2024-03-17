@@ -1,0 +1,216 @@
+:root {
+    --color-primary: #068d9d;
+    --color-primary-dark: #6D9DC5;
+    --color-primary-light: #AEECEF;
+
+    --color-secondary: #FDDB6B;
+    --color-secondary-dark: #c2a349;
+    --color-secondary-light: #fde68c;
+
+    --color-success: #4caf50;
+    --color-error: #f44336;
+    --color-warning: #ffeb3b;
+    --color-info: #2196f3;
+    --color-accent: #80DED9;
+
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-grey: #9e9e9e;
+    --color-light-grey: #f5f5f5;
+    --color-dark-grey: #616161;
+
+    --background-color-primary: #E0F7FA;
+    --background-color-secondary: #FFFDE7;
+    --background-color-success: #E8F5E9;
+    --background-color-error: #FFEBEE;
+    --background-color-warning: #FFF8E1;
+    --background-color-info: #E3F2FD;
+    --background-color-accent: #E0F7FA;
+    --background-color-neutral: #EEEEEE;
+
+    --background-color-primary-dark: #055C63;
+    --background-color-secondary-dark: #B28900;
+    --background-color-success-dark: #388E3C;
+    --background-color-error-dark: #D32F2F;
+    --background-color-warning-dark: #FFA000;
+    --background-color-info-dark: #1976D2;
+    --background-color-accent-dark: #4BA3A6;
+    --background-color-neutral-dark: #1a1c1b;
+}
+
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: var(--color-black);
+    font-family: "Noto Sans Gurmukhi", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    height: 100vh;
+}
+
+body {
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--background-color-primary-dark);
+    padding: 5px;
+}
+
+#titulo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: "Madimi One", sans-serif;
+    font-style: normal;
+    color: var(--color-white);
+}
+
+#logo {
+    max-width: 20px;
+}
+
+#boton-buscar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    border-radius: 15px;
+    padding: 5px;
+    background-color: var(--color-primary);
+    font-size: xx-small;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-black);
+    gap: 15px;
+}
+
+.tarjeta {
+    background-color: var(--background-color-neutral-dark);
+    width: 250px;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+.lista-tarjeta {
+    font-size: xx-small;
+    color: var(--color-grey);
+    margin: 6px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#entrada-calculadora {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+#entrada-calculadora span {
+    font-size: smaller;
+    margin: 0px 10px;
+    display: flex;
+    align-items: center;
+}
+
+#entrada-calculadora span input {
+    margin-left: 5px;
+    height: 15px;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    caret-color: var(--color-primary);
+    width: 100%;
+    color: var(--color-primary);
+}
+
+#entrada-calculadora span input:hover,
+#entrada-calculadora span input:focus {
+    border: none;
+    outline: none;
+}
+
+#entrada-calculadora span input[type="number"]::-webkit-inner-spin-button,
+#entrada-calculadora span input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#entrada-calculadora span input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+#entrada-calculadora .lista-tarjeta a {
+    margin-left: 5px;
+    font-size: x-small;
+}
+
+.lista-tarjeta.comentario {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 15px;
+}
+
+#contenedor-provincia {
+    display: flex;
+    align-items: baseline;
+}
+
+#provincia {
+    background-color: transparent;
+    color: var(--color-dark-grey);
+    width: 110px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px var(--background-color-neutral-dark);
+}
+
+#provincia:hover {
+    border-color: var(--color-primary);
+}
+
+#provincia:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 5px var(--color-primary);
+}
+
+#provincia option {
+    padding: 10px;
+    background-color: var(--color-light-grey);
+    color: #333;
+    border: 1px solid var(--color-light-grey);
+}
+
+#resultado-total {
+    color: var(--color-primary);
+    font-size: small;
+    font-weight: 500;
+}
+
+.moneda-seleccionada {
+    color: var(--color-primary);
+    font-weight: bold;
+}
