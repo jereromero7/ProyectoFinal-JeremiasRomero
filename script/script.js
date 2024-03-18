@@ -3,9 +3,9 @@ let precioDolar = 956.45;
 let monedaSeleccionada = "USD";
 let precioConvertido = 0.0;
 let precio_inicial = 0.0;
-const IVA = 0.21;
-const PAIS = 0.08;
-const GANANCIAS = 0.3;
+let IVA = 0.21;
+let PAIS = 0.08;
+let GANANCIAS = 0.3;
 let iibb = 0.0;
 
 let precio_calculado = {
@@ -139,24 +139,30 @@ function inicializarSelectProvincias() {
 }
 
 function calcularYRenderizar() {
-    let precioAUsar = monedaSeleccionada === "USD" ? precioConvertido : precio_inicial;
+  let precioSinImpuesto;
+
+  if (monedaSeleccionada === "USD") {
+      precioSinImpuesto = precio_inicial * precioDolar;
+  } else {
+      precioSinImpuesto = precio_inicial;
+  }
 
   const precios_calculado = calculadoraPesos(
-    precioAUsar,
-    IVA,
-    PAIS,
-    GANANCIAS,
-    iibb
+      precioSinImpuesto,
+      IVA,
+      PAIS,
+      GANANCIAS,
+      iibb
   );
 
   renderizarResultados(
-    precios_calculado.precioIva,
-    precios_calculado.precioPais,
-    precios_calculado.precioGanancias,
-    precios_calculado.precioIibb,
-    precio_inicial,
-    precios_calculado.total,
-    precioDolar
+      precios_calculado.precioIva,
+      precios_calculado.precioPais,
+      precios_calculado.precioGanancias,
+      precios_calculado.precioIibb,
+      precioSinImpuesto,
+      precios_calculado.total,
+      precioDolar
   );
 }
 
@@ -180,7 +186,21 @@ function calculadoraPesos(precioInicial, iva, iPais, ganancias, iibb) {
 }
 
 function formatearPesos(valor) {
-  return `AR$ ${new Intl.NumberFormat("es-AR").format(valor.toFixed(2))}`;
+  if (typeof valor !== 'number') {
+    return 'No válido';
+  }
+
+  const partes = valor.toFixed(2).split('.');
+  const parteEntera = partes[0];
+  let parteDecimal = partes[1];
+  
+  if (parteDecimal.length < 2) {
+    parteDecimal += '0';
+  }
+
+  const parteEnteraFormateada = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  
+  return `AR$ ${parteEnteraFormateada}.${parteDecimal}`;
 }
 
 function renderizarResultados(
