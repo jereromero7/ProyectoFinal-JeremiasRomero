@@ -21,8 +21,8 @@
     <section id="entrada-calculadora" class="tarjeta">
       <span class="lista-tarjeta">$ <input id="input-calculadora" type="number" min="0" max="999999" /></span>      
       <span class="lista-tarjeta">
-        <a id="selector-usd">USD</a>
-        <a id="selector-ars">ARS</a>
+        <a id="selector-usd" class="selector-moneda">USD</a>
+        <a id="selector-ars" class="selector-moneda">ARS</a>
       </span>
     </section>
 
@@ -52,8 +52,8 @@
         <span id="resultado-total">AR$ 0,00</span>
       </div>
       <div class="lista-tarjeta comentario">
-        <p>Dólar oficial <span id="precio-dolar">0</span> by Dolarito.ar</p>
-        <p>Hay bancos que pueden tomar la cotiz. +10% (AR$ 956.45)</p>
+        <p>Dólar oficial <strong id="precio-dolar-oficial">0</strong> by Dolarapi.com</p>
+        <p>Hay bancos que pueden tomar la cotiz. +10% (<span id="precio-dolar">0</span>)</p>
       </div>
     </section>
 

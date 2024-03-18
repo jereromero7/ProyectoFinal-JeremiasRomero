@@ -1,5 +1,6 @@
 // DATOS NECESARIOS PARA CALCULAR
-let precioDolar = 956.45;
+let precioDolarOficial = 0.00;
+let precioDolar = 0.00;
 let monedaSeleccionada = "USD";
 let precioConvertido = 0.0;
 let precio_inicial = 0.0;
@@ -119,6 +120,21 @@ const PROVINCIAS = [
   },
 ];
 
+async function obtenerPrecioDolar() {
+  try {
+    const  respuesta = await fetch("https://dolarapi.com/v1/dolares/oficial");
+    const data = await respuesta.json();
+
+    precioDolarOficial = data.venta;
+    precioDolar = precioDolarOficial * 1.10;
+
+    calcularYRenderizar();
+  } catch (error) {
+    console.error("Error al obtener el precio del dólar:", error);
+    alert("No se pudo obtener el precio del dólar. Inténtalo de nuevo más tarde.");
+  }
+}
+
 function inicializarSelectProvincias() {
   const selectProvincias = document.getElementById("provincia");
   PROVINCIAS.forEach((provincia, index) => {
@@ -162,6 +178,7 @@ function calcularYRenderizar() {
       precios_calculado.precioIibb,
       precioSinImpuesto,
       precios_calculado.total,
+      precioDolarOficial,
       precioDolar
   );
 }
@@ -210,6 +227,7 @@ function renderizarResultados(
   rProvincia,
   rSinImpuesto,
   rTotal,
+  rPrecioDolarOficial,
   rPrecioDolar
 ) {
   document.getElementById("resultado-iva").innerText = formatearPesos(rIva);
@@ -218,6 +236,7 @@ function renderizarResultados(
   document.getElementById("resultado-provincia").innerText = formatearPesos(rProvincia);
   document.getElementById("resultado-sin-impuesto").innerText = formatearPesos(rSinImpuesto);
   document.getElementById("resultado-total").innerText = formatearPesos(rTotal);
+  document.getElementById("precio-dolar-oficial").innerText = formatearPesos(rPrecioDolarOficial);
   document.getElementById("precio-dolar").innerText = formatearPesos(rPrecioDolar);
 }
 
@@ -253,6 +272,9 @@ selectorUsd.addEventListener("click", ()=>{
     calcularYRenderizar();
 })
 
-
+obtenerPrecioDolar()
 inicializarSelectProvincias();
 calcularYRenderizar();
+
+
+
